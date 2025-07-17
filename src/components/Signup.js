@@ -1,5 +1,5 @@
 import React, {useRef, useState} from "react";
-import { Form,Button, Card } from "react-bootstrap";
+import { Form,Button, Card, Alert } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 export default function Signup(){
 
@@ -16,7 +16,7 @@ export default function Signup(){
 
         e.preventDefault()
 
-        if(passwordRef.current.value === 
+        if(passwordRef.current.value !== 
             passwordConfirmRef.current.value){
                 return setError('Passwords do not match')
             }
@@ -41,6 +41,7 @@ export default function Signup(){
             <Card>
                 <Card.Body>
                     <h2 className="text-center mb-4">Sign Up</h2>
+                    {error && <Alert variant="danger">{error}</Alert>}
                 </Card.Body>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group id="email">
